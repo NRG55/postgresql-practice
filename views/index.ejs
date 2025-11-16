@@ -4,6 +4,14 @@
     </head>
     <body>
         <h1><%= title %></h1>
+        <ul>
+            <% if (locals.usernames) { usernames.forEach((username) => { %>
+                    <li>
+                        <%= username.username %>
+                    </li>
+                <% }) %>
+            <% } %>
+        </ul>
         <a href="/new">Create a user</a>
     </body>
 </html>

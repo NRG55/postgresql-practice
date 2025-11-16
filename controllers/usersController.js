@@ -1,10 +1,18 @@
 const db = require("../db/queries");
 
 exports.usersGet = async (req, res) => {
-    const usernames = await db.getAllUsernames();
-    console.log("Usernames: ", usernames);
-    res.render("index", { title: "User List", usernames: usernames });
-};
+    const username = req.query.search;
+
+    if (username) {
+        const usernames = await db.searchUsername(username);
+        console.log("Usernames: ", usernames);
+        res.render("index", { title: "User List", usernames: usernames });        
+    } else {
+        const usernames = await db.getAllUsernames();
+        console.log("Usernames: ", usernames);
+        res.render("index", { title: "User List", usernames: usernames });
+    };   
+};   
 
 exports.usersCreateGet = (req, res) => {
     console.log("usernames will be logged here - wip");

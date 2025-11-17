@@ -25,3 +25,8 @@ exports.usersCreatePost = async (req, res) => {
     console.log("username to be saved: ", username);
     res.redirect("/");
 };
+
+exports.usersDeleteGet = async (req, res) => {   
+    await db.deleteAllUsernames();  
+    res.redirect("/");
+};
